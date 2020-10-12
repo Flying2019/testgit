@@ -1,7 +1,7 @@
 #include<iostream>
 #include<cstdio>
 #include<cstring>
-#define N 100010
+#define N 200010
 using namespace std;
 int num[N];
 struct ST{
