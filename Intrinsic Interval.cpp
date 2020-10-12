@@ -1,7 +1,7 @@
 #include<iostream>
 #include<cstdio>
 #include<cstring>
-#define N 200010
+#define N 210
 using namespace std;
 int num[N];
 struct ST{
@@ -12,7 +12,7 @@ struct ST{
         for(int i=2;i<=n;i++) lg[i]=lg[i>>1]+1;
         for(int i=1;i<=n;i++) al[i][0]=ar[i][0]=num[i];
         for(int i=1;i<=16;i++)
-            for(int j=1;j+(1<<i)-1<=n;i++) al[j][i]=min(al[j][i-1],al[j+(1<<(i-1))][i-1]),ar[j][i]=max(ar[j][i-1],ar[j+(1<<(i-1))][i-1]);
+            for(int j=1;j+(1<<i)-1<=n;j++) al[j][i]=min(al[j][i-1],al[j+(1<<(i-1))][i-1]),ar[j][i]=max(ar[j][i-1],ar[j+(1<<(i-1))][i-1]);
     }
     int get_min(int l,int r){int t=lg[r-l+1];return min(al[l][t],al[r-(1<<t)+1][t]);}
     int get_max(int l,int r){int t=lg[r-l+1];return max(ar[l][t],ar[r-(1<<t)+1][t]);}
@@ -125,9 +125,9 @@ int main()
         int l,r;
         scanf("%d%d",&l,&r);
         int x=id[l],y=id[r];
-        int c=lca(x,y),len=dep[c]-dep[x]-1;
+        int c=lca(x,y);
         if(!x || !y || !c) throw;
-        if(typ[c]) printf("%d %d\n",lf[up(x,len)],rf[up(y,len)]);
+        if(typ[c]) printf("%d %d\n",lf[up(x,dep[x]-dep[c]-1)],rf[up(y,dep[y]-dep[c]-1)]);
         else printf("%d %d\n",lf[c],rf[c]);
     }
     return 0;
