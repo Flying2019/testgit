@@ -3,6 +3,7 @@
         "*.tcc": "cpp",
         "list": "cpp",
         "random": "cpp",
-        "streambuf": "cpp"
+        "streambuf": "cpp",
+        "cstring": "cpp"
     }
 }
