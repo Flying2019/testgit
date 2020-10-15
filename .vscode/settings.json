@@ -4,6 +4,7 @@
         "list": "cpp",
         "random": "cpp",
         "streambuf": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "cstdio": "cpp"
     }
 }
