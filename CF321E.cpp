@@ -21,7 +21,7 @@ void work(int x)
     {
         f[i]=f[i-1]+x,g[i]=g[i-1]+1;
         for(int j=0;j<i-1;j++)
-        if(f[j]+s[j+1][i]+x<f[i]) f[i]=f[j]+s[j+1][i]+x,g[i]=g[j]+1;
+        if(f[j]+s[j+1][i]+x<f[i] || (f[j]+s[j+1][i]+x==f[i] && g[j]+1<g[i])) f[i]=f[j]+s[j+1][i]+x,g[i]=g[j]+1;
     }
 }
 int main()
@@ -34,15 +34,15 @@ int main()
         for(int j=i;j<=n;j++) s[i][j]=s[i][j-1]+a[i][j];
     for(int i=n;i>=1;i--)
         for(int j=i;j<=n;j++) s[i][j]+=s[i+1][j];
-    int l=-1e9,r=1e9;
+    int l=-1e9,r=1e9,ans=0;
     while(l<=r)
     {
         int mid=(l+r)>>1;
         work(mid);
         if(g[n]==m){printf("%d",f[n]-m*mid);return 0;}
-        if(g[n]<=m) r=mid,ans=f[n]-mid*w;
-        else l=mid;
+        if(g[n]<=m) r=mid-1,ans=f[n]-mid*m;
+        else l=mid+1;
     }
-    printf("%.0f",f[n]-g[n]*l);
+    printf("%d",ans);
     return 0;
 }

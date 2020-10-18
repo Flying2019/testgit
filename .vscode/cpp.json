@@ -1,0 +1,100 @@
+{
+	"my normal_program": {
+		"prefix": "#g",
+		"body": [
+			"#include<iostream>",
+			"#include<cstdio>",
+			"#include<cstring>",
+			"#define N ${1:100010}",
+			"using namespace std;",
+			"int main()",
+			"{",
+			"    int ${2:n};",
+			"    scanf(\"%d\",&${2:n});",
+			"    $0",
+			"    return 0;",
+			"}"
+		],
+		"description": "my normal_program"
+	},
+	"my graph_program": {
+		"prefix": "#gr",
+		"body": [
+			"#include<iostream>",
+			"#include<cstdio>",
+			"#include<cstring>",
+			"#define N ${1:100010}",
+			"#define M ${2:100010}",
+			"using namespace std;",
+			"int nxt[M<<1],to[M<<1],head[N],cnt;",
+			"void add(int u,int v)",
+			"{",
+			"    nxt[++cnt]=head[u];",
+			"    to[cnt]=v;",
+			"    head[u]=cnt;",
+			"}",
+			"int main()",
+			"{",
+			"    int ${3:n};",
+			"    scanf(\"%d\",&${3:n});",
+			"    $0",
+			"    return 0;",
+			"}"
+		],
+		"description": "my graph_program"
+	},
+	"my tree_program": {
+		"prefix": "#gr",
+		"body": [
+			"#include<iostream>",
+			"#include<cstdio>",
+			"#include<cstring>",
+			"#define N ${1:100010}",
+			"using namespace std;",
+			"int nxt[N<<1],to[N<<1],head[N],cnt;",
+			"void add(int u,int v)",
+			"{",
+			"    nxt[++cnt]=head[u];",
+			"    to[cnt]=v;",
+			"    head[u]=cnt;",
+			"}",
+			"int main()",
+			"{",
+			"    int ${2:n};",
+			"    scanf(\"%d\",&${2:n});",
+			"    for(int i=1;i<n;i++)",
+			"    {",
+			"        int u,v;",
+			"        scanf(\"%d%d\",&u,&v);",
+			"        add(u,v),add(v,u);",
+			"    }",
+			"    $0",
+			"    return 0;",
+			"}"
+		],
+		"description": "my tree_program"
+	},
+	"my for": {
+		"prefix": "for",
+		"body": [
+			"for(int ${1:i}=${2:1};${1:i}<=${3:n};${1:i}++)"
+		],
+		"description": "my for"
+	},
+	"tree dfs":{
+		"prefix": "#dfs",
+		"body": [
+			"void dfs(int u,int p)",
+			"{${1:\n    fa[u]=p;}${2:\n    dep[u]=dep[p]+1;}",
+			"    for(int i=head[u];i;i=nxt[i])",
+			"    {",
+			"        int v=to[i];",
+			"        if(v==p) continue;",
+			"        dfs(v,u);",
+			"        $0",
+			"    }",
+			"}"
+		],
+		"description": "dfs for tree"
+	}
+}
