@@ -10,10 +10,10 @@ void add(int u,int v)
     to[cnt]=v;
     head[u]=cnt;
 }
-int fa[N];
+int id[N],tot;
 void dfs(int u,int p)
 {
-    fa[u]=p;
+    id[++tot]=p;
     for(int i=head[u];i;i=nxt[i])
     {
         int v=to[i];
