@@ -17,15 +17,21 @@ inline void sa_sort(int *S,int n,int m,int *s,int *op,int tn)
     for(re int i=2;i<=m;i++) c1[i]+=c1[i-1];
     for(re int i=1;i<=m;i++) c[i]=c1[i];
     for(re int i=tn;i;i--) L(S[i]);
+    printf("   ");for(int i=1;i<=n;i++) printf("%d ",op[i]);puts("");
+    printf("<= ");for(int i=1;i<=n;i++) printf("%d ",sa[i]);puts("");
     for(re int i=1;i<=m+1;i++) c[i]=c1[i-1]+1;
     for(re int i=1;i<=n;i++)
-    if(sa[i]>1 && op[sa[i]-1]) R(sa[i]-1);
+    if(sa[i]>1 && op[sa[i]-1]) {R(sa[i]-1);
+    printf("=> ");for(int i=1;i<=n;i++) printf("%d ",sa[i]);puts("");}
     for(re int i=1;i<=m;i++) c[i]=c1[i];
     for(re int i=n;i;i--)
-    if(sa[i]>1 && !op[sa[i]-1]) L(sa[i]-1);
+    if(sa[i]>1 && !op[sa[i]-1]) {L(sa[i]-1);
+    printf("<= ");for(int i=1;i<=n;i++) printf("%d ",sa[i]);puts("");}
 }
 void SA_IS(int n,int m,int *s,int *op,int *pos)
 {
+    puts("== ");
+    for(int i=1;i<=n;i++) printf("%d ",s[i]);puts("");
     int tot=0,cnt=0;int *S=s+n;
     op[n]=0;
     for(re int i=n-1;i;i--) op[i]=(s[i]!=s[i+1])?s[i]>s[i+1]:op[i+1];
@@ -51,6 +57,7 @@ void SA_IS(int n,int m,int *s,int *op,int *pos)
     if(tot!=cnt) SA_IS(tot,cnt,S,op+n,pos+n);
     else for(re int i=1;i<=tot;i++) sa[S[i]]=i;
     for(re int i=1;i<=tot;i++) S[i]=pos[sa[i]];
+    printf("-> ");for(int i=1;i<=tot;i++) printf("%d ",pos[i]);puts("");
     sa_sort(S,n,m,s,op,tot);
 }
 int ht[N];
