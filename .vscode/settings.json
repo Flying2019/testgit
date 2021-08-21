@@ -75,5 +75,7 @@
         "valarray": "cpp",
         "variant": "cpp",
         "queue": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Enabled",
+    "C_Cpp.dimInactiveRegions": false
 }
